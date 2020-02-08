@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "277586851143",
+    "firebase_url": "https://busicard-98523.firebaseio.com",
+    "project_id": "busicard-98523",
+    "storage_bucket": "busicard-98523.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277586851143:android:0e27f25914a16b0c7b4862",
+        "android_client_info": {
+          "package_name": "com.sandar.busicard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277586851143-kcllfkch6am6m093l3le6bsaq7rj04ec.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-5NBMLnALAopvWuDOvGJqoUryDynX6DI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277586851143-kcllfkch6am6m093l3le6bsaq7rj04ec.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
