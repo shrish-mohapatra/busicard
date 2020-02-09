@@ -1,6 +1,7 @@
 import 'package:busicard/models/cardProfile.dart';
 import 'package:busicard/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DatabaseService {
 
@@ -11,7 +12,7 @@ class DatabaseService {
   final CollectionReference cardCollection = Firestore.instance.collection('cards');
 
   Future updateUserData(String businessName, String name, String tagline,
-      String jobTitle, String website, String email, String phone) async {
+      String jobTitle, String website, String email, String phone, String networkHash) async {
     return await cardCollection.document(uid).setData({
       'businessName': businessName,
       'name': name,
@@ -20,12 +21,13 @@ class DatabaseService {
       'website': website,
       'email': email,
       'phone': phone,
+      'networkHash': networkHash
     });
   }
 
   // card list from snapshot
   List<CardProfile> _cardListFromSnapshot(QuerySnapshot snapshot) {
-    return snapshot.documents.map((doc){
+    List<CardProfile> allCards = snapshot.documents.map((doc){
       return CardProfile(
         businessName: doc.data['businessName'] ?? '',
         name: doc.data['name'] ?? '',
@@ -36,6 +38,8 @@ class DatabaseService {
         phone: doc.data['phone'] ?? '',
       );
     }).toList();
+
+    return allCards;
   }
 
   // user data from snapshot
@@ -49,6 +53,7 @@ class DatabaseService {
       website: snapshot.data['website'],
       email: snapshot.data['email'],
       phone: snapshot.data['phone'],
+      networkHash: snapshot.data['networkHash']
     );
   }
 

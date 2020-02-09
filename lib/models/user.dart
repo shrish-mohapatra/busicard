@@ -15,7 +15,8 @@ class UserData {
   final String website;
   final String email;
   final String phone;
+  final String networkHash;
 
   UserData({ this.uid, this.businessName, this.name, this.tagline, this.jobTitle,
-    this.website, this.email, this.phone });
+    this.website, this.email, this.phone, this.networkHash });
 }

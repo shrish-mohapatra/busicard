@@ -130,6 +130,7 @@ class _ProfileFormState extends State<ProfileForm> {
                           _currentWebsite ?? userData.website,
                           userData.email,
                           _currentPhone ?? userData.phone,
+                          userData.networkHash
                         );
                         Navigator.pop(context);
                       }
