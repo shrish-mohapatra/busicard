@@ -22,35 +22,37 @@ class _QrGenState extends State<QrGen>{
 
   @override
   Widget build(BuildContext context) {
-    var rng = new Random();
-
     final user = Provider.of<User>(context);
 
-    return StreamBuilder<UserData>(
-        stream: DatabaseService(uid: user.uid).userData,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            UserData userData = snapshot.data;
+    try {
+      return StreamBuilder<UserData>(
+          stream: DatabaseService(uid: user.uid).userData,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              UserData userData = snapshot.data;
 
-            return Scaffold(
-              body: Center(
-                child: Column(
+              return Scaffold(
+                body: Center(
+                  child: Column(
 
-                  children: <Widget>[
-                    QrImage(
-                      data: userData.email,
-                      version: rng.nextInt(25),
+                    children: <Widget>[
+                      QrImage(
+                        data: userData.email ?? 'error',
+                        version: 4,
 
-                    )
-                  ],
+                      )
+                    ],
+                  ),
+
                 ),
-
-              ),
-            );
-          } else {
-            return Loading();
+              );
+            } else {
+              return Loading();
+            }
           }
-        }
-    );
+      );
+    } catch(e) {
+      return Loading();
+    }
   }
 }

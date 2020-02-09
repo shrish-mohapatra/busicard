@@ -14,13 +14,12 @@ class CardTile extends StatelessWidget {
       child: Card(
         elevation: 8.0,
         color: Colors.black87,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+        ),
         margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 3.0),
         child: ListTile(
           contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          leading: CircleAvatar(
-            radius: 25.0,
-            backgroundColor: Colors.white70,
-          ),
           title: Text(
             card.name,
             style: TextStyle(color: Colors.white),

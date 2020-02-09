@@ -2,6 +2,7 @@ import 'package:busicard/models/cardProfile.dart';
 import 'package:busicard/qr_code/QrGen.dart';
 import 'package:busicard/qr_code/Qr_Scanner.dart';
 import 'package:busicard/screens/home/card_list.dart';
+import 'package:busicard/screens/home/profile_form.dart';
 import 'package:busicard/services/auth.dart';
 import 'package:busicard/services/database.dart';
 import 'package:flutter/material.dart';
@@ -15,20 +16,35 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final AuthService _auth = AuthService();
-  int _currentIndex = 0;
+  int _currentIndex = 1;
   final List<Widget> _children = [
     QrScan(), //should be QrScan
     CardList(),
-    QrGen(),
+    ProfileForm(),
   ];
 
   @override
   Widget build(BuildContext context) {
+
+    void _showProfile() {
+      showModalBottomSheet(
+          context: context,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(25.0))),
+          builder: (context) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+              child: QrGen(),
+            );
+          }
+      );
+    }
+
     return StreamProvider<List<CardProfile>>.value(
       value: DatabaseService().cards,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Busicard'),
+          title: Text('CardShare'),
           backgroundColor: Colors.black87,
           actions: <Widget>[
             FlatButton.icon(
@@ -45,6 +61,17 @@ class _MainScreenState extends State<MainScreen> {
                 await _auth.signOut();
               },
             ),
+            FlatButton.icon(
+              icon: Icon(
+                  Icons.person,
+                  color: Colors.white
+              ),
+              label: Text(
+                'QR',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () => _showProfile(),
+            )
           ],
         ),
         body: _children[_currentIndex],
