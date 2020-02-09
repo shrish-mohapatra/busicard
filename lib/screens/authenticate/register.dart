@@ -1,16 +1,16 @@
 import 'package:busicard/services/auth.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
 
   final Function toggleView;
-  SignIn({ this.toggleView });
+  Register({ this.toggleView });
 
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
@@ -26,16 +26,16 @@ class _SignInState extends State<SignIn> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Text('Sign in to Busicard'),
+        title: Text('Sign up to Busicard'),
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(
-                Icons.person,
+              Icons.person,
               color: Colors.white,
             ),
             label: Text(
-                'Register',
-                style: TextStyle(color: Colors.white),
+              'Sign In',
+              style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
               widget.toggleView();
@@ -60,8 +60,8 @@ class _SignInState extends State<SignIn> {
               SizedBox(height: 20.0),
               TextFormField(
                 // Password field
-                validator: (val) => val.length < 7 ? 'Enter a password 7+ chars long' : null,
                 obscureText: true,
+                validator: (val) => val.length < 7 ? 'Enter a password 7+ chars long' : null,
                 onChanged: (val) {
                   setState(() => password = val);
                 },
@@ -70,14 +70,14 @@ class _SignInState extends State<SignIn> {
               RaisedButton(
                 color: Colors.pink[400],
                 child: Text(
-                  'Sign In',
-                    style: TextStyle(color: Colors.white),
+                  'Sign Up',
+                  style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
-                    dynamic result = await _auth.signInEmail(email, password);
+                    dynamic result = await _auth.registerWithEmail(email, password);
                     if (result == null) {
-                      setState(() => error = 'User does not exist.');
+                      setState(() => error = 'Please provide valid email.');
                     }
                   }
                 },
