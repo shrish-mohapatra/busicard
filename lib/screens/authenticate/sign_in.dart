@@ -1,5 +1,6 @@
 import 'package:busicard/services/auth.dart';
 import 'package:busicard/shared/constants.dart';
+import 'package:busicard/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -15,6 +16,7 @@ class _SignInState extends State<SignIn> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   // text field states
   String email = '';
@@ -23,7 +25,7 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.black87,
@@ -78,9 +80,14 @@ class _SignInState extends State<SignIn> {
                 ),
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
+                    setState(() => loading = true);
                     dynamic result = await _auth.signInEmail(email, password);
+
                     if (result == null) {
-                      setState(() => error = 'User does not exist.');
+                      setState(() {
+                        error = 'User does not exist.';
+                        loading = false;
+                      });
                     }
                   }
                 },

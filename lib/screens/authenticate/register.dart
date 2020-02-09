@@ -1,5 +1,6 @@
 import 'package:busicard/services/auth.dart';
 import 'package:busicard/shared/constants.dart';
+import 'package:busicard/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -15,6 +16,7 @@ class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   // text field states
   String email = '';
@@ -23,7 +25,7 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() :Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.black87,
@@ -78,9 +80,14 @@ class _RegisterState extends State<Register> {
                 ),
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
+                    setState(() => loading = true);
                     dynamic result = await _auth.registerWithEmail(email, password);
+
                     if (result == null) {
-                      setState(() => error = 'Please provide valid email.');
+                      setState(() {
+                        error = 'Please provide proper email.';
+                        loading = false;
+                      });
                     }
                   }
                 },

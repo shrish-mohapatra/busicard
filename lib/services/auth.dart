@@ -1,4 +1,5 @@
 import 'package:busicard/models/user.dart';
+import 'package:busicard/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
@@ -45,6 +46,12 @@ class AuthService {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
+
+      // create document for the user w/ uid
+      await DatabaseService(uid: user.uid).updateUserData('My Business',
+          'John Doe', 'I love to code!', 'Mobile Developer', 'www.johndoe.com',
+          user.email, '123-456-789');
+
       return _userFromFirebaseUser(user);
     } catch(e) {
       print(e.toString());
