@@ -29,7 +29,7 @@ class _SignInState extends State<SignIn> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Text('Sign in to CardShare'),
+        title: Text('CardShare'),
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(

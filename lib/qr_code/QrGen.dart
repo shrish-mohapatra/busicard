@@ -40,7 +40,18 @@ class _QrGenState extends State<QrGen>{
                         data: userData.email ?? 'error',
                         version: 4,
 
-                      )
+                      ),
+                      SizedBox(height: 20.0),
+                      Text(
+                        userData.name,
+                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        userData.jobTitle + '\n' + userData.email,
+                        style: TextStyle(fontSize: 18),
+                        textAlign: TextAlign.center,
+                      ),
                     ],
                   ),
 

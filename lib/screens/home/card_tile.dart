@@ -22,13 +22,10 @@ class CardTile extends StatelessWidget {
           contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
           title: Text(
             card.name,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white, fontSize: 18),
           ),
           subtitle: Text(
-              '${card.businessName}\n'
-              '${card.name}\n'
-              '${card.tagline}\n'
-              '${card.jobTitle}\n'
+              '${card.businessName}, ${card.jobTitle}\n\n'
               '${card.website}\n'
               '${card.email}\n'
               '${card.phone}',

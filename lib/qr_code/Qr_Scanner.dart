@@ -49,6 +49,7 @@ class QrScanState extends State<QrScan>{
                 flex: 1,
                 child: Center(
                   child: RaisedButton(
+                    color: Colors.pink[400],
                     child: Text("$qrText"),
                     onPressed: () async {
                       if (!userData.networkHash.contains("$qrText")) {

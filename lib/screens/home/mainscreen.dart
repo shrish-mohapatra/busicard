@@ -13,7 +13,6 @@ class MainScreen extends StatefulWidget {
   _MainScreenState createState() => _MainScreenState();
   }
 
-
 class _MainScreenState extends State<MainScreen> {
   final AuthService _auth = AuthService();
   int _currentIndex = 1;
@@ -61,9 +60,10 @@ class _MainScreenState extends State<MainScreen> {
                 await _auth.signOut();
               },
             ),
+
             FlatButton.icon(
               icon: Icon(
-                  Icons.person,
+                  Icons.business,
                   color: Colors.white
               ),
               label: Text(
@@ -78,6 +78,7 @@ class _MainScreenState extends State<MainScreen> {
         bottomNavigationBar: BottomNavigationBar(
           onTap: onTabTapped,
           currentIndex: _currentIndex,
+          fixedColor: Colors.pink[400],
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.camera),
@@ -85,11 +86,11 @@ class _MainScreenState extends State<MainScreen> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              title: Text("home"),
+              title: Text("Home"),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              title: Text("profile"),
+              title: Text("Profile"),
             ),
           ],
         ),

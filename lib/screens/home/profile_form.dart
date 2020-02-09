@@ -45,6 +45,7 @@ class _ProfileFormState extends State<ProfileForm> {
                     Text(
                       'Update your profile.',
                       style: TextStyle(fontSize: 18.0),
+                      textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 20.0),
 

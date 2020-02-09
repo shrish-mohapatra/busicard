@@ -29,7 +29,7 @@ class _RegisterState extends State<Register> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Text('Sign up to CardShare'),
+        title: Text('CardShare'),
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(
