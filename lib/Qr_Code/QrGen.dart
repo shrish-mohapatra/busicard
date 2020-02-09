@@ -2,9 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'package:qr_flutter/qr_flutter.dart';
 import 'package:busicard/Qr_Code/Qr_Scanner.dart';
 import 'dart:math';
+
+import 'package:qr_flutter/qr_flutter.dart';
 
 
 

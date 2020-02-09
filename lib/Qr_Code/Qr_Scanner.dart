@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:busicard/Qr_Code/Qr_Scanner.dart';
+import 'package:busicard/Qr_Code/QrGen.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_code_scanner/qr_scanner_overlay_shape.dart';
-import 'package:qr_flutter/qr_flutter.dart';
-import 'package:busicard/Qr_Code/QrGen.dart';
-
-
-
 
 class MyApp extends StatefulWidget{
   var yourQR = "harsi";
@@ -19,8 +14,6 @@ class MyAppState extends State<MyApp>{
   var qrText = "";
   //var yourQR = "";
   QRViewController controller;
-
-
 
   @override
   Widget build(BuildContext context) {
