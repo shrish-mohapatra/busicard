@@ -17,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
   final AuthService _auth = AuthService();
   int _currentIndex = 0;
   final List<Widget> _children = [
-    CardList(), //should be QrScan
+    QrScan(), //should be QrScan
     CardList(),
     QrGen(),
   ];
