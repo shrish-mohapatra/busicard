@@ -26,7 +26,12 @@ class CardTile extends StatelessWidget {
           ),
           subtitle: Text(
               '${card.businessName}\n'
-              'Email: ${card.email}',
+              '${card.name}\n'
+              '${card.tagline}\n'
+              '${card.jobTitle}\n'
+              '${card.website}\n'
+              '${card.email}\n'
+              '${card.phone}',
               style: TextStyle(color: Colors.white70),
           ),
         ),

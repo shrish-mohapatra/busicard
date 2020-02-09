@@ -137,7 +137,6 @@ class _ProfileFormState extends State<ProfileForm> {
                         }
                       },
                     ),
-                    SizedBox(height: 250.0),
                   ]
               ),
             )

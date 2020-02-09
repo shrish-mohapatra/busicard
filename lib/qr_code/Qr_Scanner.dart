@@ -51,18 +51,20 @@ class QrScanState extends State<QrScan>{
                   child: RaisedButton(
                     child: Text("$qrText"),
                     onPressed: () async {
-                      String newHash = userData.networkHash + "$qrText";
+                      if (!userData.networkHash.contains("$qrText")) {
+                        String newHash = userData.networkHash + "$qrText";
 
-                      await DatabaseService(uid: user.uid).updateUserData(
-                          userData.businessName,
-                          userData.name,
-                          userData.tagline,
-                          userData.jobTitle,
-                          userData.website,
-                          userData.email,
-                          userData.phone,
-                          newHash
-                      );
+                        await DatabaseService(uid: user.uid).updateUserData(
+                            userData.businessName,
+                            userData.name,
+                            userData.tagline,
+                            userData.jobTitle,
+                            userData.website,
+                            userData.email,
+                            userData.phone,
+                            newHash
+                        );
+                      }
                     },
                   ),
                 ),
