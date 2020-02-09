@@ -1,58 +1,39 @@
 import 'dart:math';
 
+import 'package:busicard/models/user.dart';
+import 'package:busicard/qr_code/Qr_Scanner.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'package:busicard/Qr_Code/Qr_Scanner.dart';
 import 'dart:math';
 
 import 'package:qr_flutter/qr_flutter.dart';
 
+class QrGen extends StatefulWidget{
 
-
-class AnApp extends StatelessWidget{
-
+  //QrGen({Key key, this.title}):super(key:key);
   @override
-  Widget build(BuildContext context) {
-
-    return MaterialApp(
-      title: 'flutter demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: "Flutter Qr"),
-    );
-
-  }
-}
-
-class MyHomePage extends StatefulWidget{
-
-  MyHomePage({Key key, this.title}):super(key:key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _QrGenState createState() => _QrGenState();
 
 }
 
-class _MyHomePageState extends State<MyHomePage>{
+class _QrGenState extends State<QrGen>{
 
   @override
   Widget build(BuildContext context) {
     var rng = new Random();
 
+    final user = Provider.of<User>(context);
+
     return Scaffold(
 
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+
       body: Center(
         child: Column(
 
           children: <Widget>[
             QrImage(
-              data: MyApp().yourQR ,
+              data: user.uid,
               version: rng.nextInt(25),
 
             )
@@ -60,12 +41,7 @@ class _MyHomePageState extends State<MyHomePage>{
         ),
 
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed:(){
-          Navigator.push(context, MaterialPageRoute(builder:(context)=> MyApp()));
-        },
-        child: Text("back"),
-      ),
+
 
 
     );

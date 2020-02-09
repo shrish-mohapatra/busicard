@@ -3,13 +3,13 @@ import 'package:busicard/Qr_Code/QrGen.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_code_scanner/qr_scanner_overlay_shape.dart';
 
-class MyApp extends StatefulWidget{
-  var yourQR = "harsi";
+class QrScan extends StatefulWidget{
+  //var yourQR = "harsi";
   @override
-  State<StatefulWidget> createState() => MyAppState();
+  State<StatefulWidget> createState() => QrScanState();
 
 }
-class MyAppState extends State<MyApp>{
+class QrScanState extends State<QrScan>{
   GlobalKey qrKey = GlobalKey();
   var qrText = "";
   //var yourQR = "";
@@ -38,15 +38,7 @@ class MyAppState extends State<MyApp>{
 
 
     ],),
-        floatingActionButton: FloatingActionButton(
 
-        onPressed: (){
-
-          Navigator.push(context, MaterialPageRoute(builder: (context) => AnApp()));
-        },
-          tooltip: 'Increment',
-          child: Icon(Icons.add),
-    )
 
     );
 
