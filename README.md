@@ -1,7 +1,12 @@
 # CardShare
 > **CardShare** is a networking application developed by **Mandar Deshpande** and **Shrish Mohapatra** using the Flutter-Dart framework for uOttaHack 2020. CardShare allows users to connect share digitized business cards through QR generation and detection, and uses Google's Firebase for cloud authentication and database backend.
 
-<img src="https://github.com/shrish-mohapatra/cardshare/blob/master/screenshots/cards.jpg" width="40%">
+<div class="row">
+  <p align="center">
+    <img src="https://github.com/shrish-mohapatra/cardshare/blob/master/screenshots/cards.jpg" width="40%">
+    <img src="https://github.com/shrish-mohapatra/cardshare/blob/master/screenshots/qr-code.jpg" width="40%">
+  </p>
+</div>
 
 ## Minimum Requirements:
 - Flutter SDK 2.1.0 or later
